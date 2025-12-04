@@ -1,0 +1,7 @@
+{
+    "info": "This file is just used to identify a project folder.",
+    "python.pythonPath": "C:/path/to/python.exe",
+    "python.envFile": "${workspaceFolder}/.env",
+    "micropython.serialPort": "COM6",
+    "micropython.board": "raspberrypi_pico"
+}
