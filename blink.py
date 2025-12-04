@@ -6,15 +6,15 @@ import json
 import network
 
 # --- Configuration WiFi ---
-WIFI_SSID = "Airbox-3FFE"      # ← CHANGEZ ICI
-WIFI_PASSWORD = "3J2J87C3"  # ← CHANGEZ ICI
+WIFI_SSID = ""      # ← CHANGEZ ICI
+WIFI_PASSWORD = ""  # ← CHANGEZ ICI
 
 # --- Configuration Dashboard AWS ---
-DASHBOARD_URL = "http://34.197.172.150:5000/api/data"
+DASHBOARD_URL = "http.../api/data"
 
 # --- Configuration Firebase ---
-FIREBASE_URL = "https://hack-abd99-default-rtdb.firebaseio.com/"  # ← CHANGEZ ICI
-FIREBASE_SECRET = "LJhLj9AQUFyWBajP0RTQakalBW3SI0SEomhlwWsK "  # ← CHANGEZ ICI
+FIREBASE_URL = "https://.....firebaseio.com/"  # ← CHANGEZ ICI
+FIREBASE_SECRET = ""  # ← CHANGEZ ICI
 
 # --- Capteurs ---
 dht11 = dht.DHT11(Pin(22))
@@ -55,10 +55,10 @@ def connect_wifi():
             timeout += 1
             print('.', end='')
             if timeout > 20:
-                print('\n❌ Timeout connexion WiFi')
+                print('\n Timeout connexion WiFi')
                 return False
                 
-    print('\n✅ WiFi connecté:', wlan.ifconfig())
+    print('\n WiFi connecté:', wlan.ifconfig())
     return True
 
 def distance_cm():
@@ -114,10 +114,10 @@ def send_to_dashboard():
         headers = {'Content-Type': 'application/json'}
         response = urequests.post(DASHBOARD_URL, json=data, headers=headers)
         response.close()
-        print("✅ Données envoyées au dashboard AWS")
+        print(" Données envoyées au dashboard AWS")
         
     except Exception as e:
-        print("❌ Erreur envoi dashboard:", e)
+        print("Erreur envoi dashboard:", e)
 
 def send_to_firebase():
     try:
@@ -160,14 +160,14 @@ def send_to_firebase():
         response = urequests.put(url, json=data, headers=headers)
         
         if response.status_code == 200:
-            print("✅ Données envoyées à Firebase")
+            print("Données envoyées à Firebase")
         else:
-            print(f"❌ Erreur Firebase: {response.status_code}")
+            print(f" Erreur Firebase: {response.status_code}")
         
         response.close()
         
     except Exception as e:
-        print("❌ Erreur envoi Firebase:", e)
+        print(" Erreur envoi Firebase:", e)
 
 def send_data_to_both_platforms():
     """Envoie les données aux deux plateformes"""
